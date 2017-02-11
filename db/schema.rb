@@ -10,10 +10,44 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170206063131) do
+ActiveRecord::Schema.define(version: 20170210211722) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+  create_table "characters", force: :cascade do |t|
+    t.string   "name"
+    t.string   "race"
+    t.string   "job"
+    t.integer  "level"
+    t.integer  "strength"
+    t.integer  "constitution"
+    t.integer  "dexterity"
+    t.integer  "intelligence"
+    t.integer  "wisdom"
+    t.integer  "charisma"
+    t.integer  "armor_class"
+    t.integer  "phys_def"
+    t.integer  "mental_def"
+    t.integer  "hit_points"
+    t.integer  "recoveries"
+    t.string   "recovery_dice"
+    t.string   "one_unique_thing"
+    t.string   "icons"
+    t.string   "backgrounds"
+    t.string   "racial"
+    t.string   "class_features"
+    t.string   "talents"
+    t.string   "melee_atk"
+    t.string   "ranged_atk"
+    t.string   "powers"
+    t.string   "feats"
+    t.boolean  "improved_initiative"
+    t.string   "equipment"
+    t.integer  "gold"
+    t.integer  "initiative"
+    t.integer  "user_id"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+    t.index ["user_id"], name: "index_characters_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -28,8 +62,8 @@ ActiveRecord::Schema.define(version: 20170206063131) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
-    t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
 end
