@@ -2,24 +2,35 @@
 
 <h1>Characters</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @characters.each do |character| %>
+<% if @characters.present? %>
+  <table>
+    <thead>
       <tr>
-        <td><%= link_to 'Show', character %></td>
-        <td><%= link_to 'Edit', edit_character_path(character) %></td>
-        <td><%= link_to 'Destroy', character, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th>Name</th>
+        <th>Class</th>
+        <th>Level</th>
+        <th colspan="3"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+
+    <tbody>
+      <% @characters.each do |character| %>
+        <tr>
+          <td><%= character.name %> </td>
+          <td><%= character.job %></td>
+          <td><%= character.level %></td>
+
+          <td><%= link_to 'View', character %></td>
+          <td><%= link_to 'Edit', edit_character_path(character) %></td>
+          <td><%= link_to 'Remove', character, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p>No characters added</p>
+<% end %>
 
 <br>
 
-<%= link_to 'New Character', new_character_path %>
+<%= link_to 'Add a character', new_character_path %>

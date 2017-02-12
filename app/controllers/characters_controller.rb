@@ -24,11 +24,18 @@ class CharactersController < ApplicationController
   # POST /characters
   # POST /characters.json
   def create
-    @character = current_user.characters.build(character_params)
+
+    initiative_bonus = set_initiative
+    updated_params = character_params.merge(initiative: initiative_bonus)
+    @character = current_user.characters.build(updated_params)
+    # @character = current_user.characters.build.(character_params)
+    # take a look at what params gives you
+    # define a method to do the math on your values
+    # pass new value back into params before saving
 
     respond_to do |format|
       if @character.save
-        format.html { redirect_to @character, notice: 'Character was successfully created.' }
+        format.html { redirect_to :back, notice: 'Character was successfully created.' }
         format.json { render :show, status: :created, location: @character }
       else
         format.html { render :new }
@@ -40,8 +47,12 @@ class CharactersController < ApplicationController
   # PATCH/PUT /characters/1
   # PATCH/PUT /characters/1.json
   def update
+
+    initiative_bonus = set_initiative
+    updated_params = character_params.merge(initiative: initiative_bonus)
+
     respond_to do |format|
-      if @character.update(character_params)
+      if @character.update(updated_params)
         format.html { redirect_to @character, notice: 'Character was successfully updated.' }
         format.json { render :show, status: :ok, location: @character }
       else
@@ -65,6 +76,23 @@ class CharactersController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_character
       @character = Character.find(params[:id])
+    end
+
+   def set_initiative
+    #  dexterity = :dexterity
+    #  puts "#{dexterity}"
+     dex = character_params[:dexterity].to_i - 10
+     puts character_params
+     dex_mod = dex / 2
+     puts character_params[:improved_initiative]
+     if character_params[:improved_initiative] == "1"
+       initiative_bonus = dex_mod.to_i + character_params[:level].to_i + 4
+     else
+       initiative_bonus = dex_mod.to_i + character_params[:level].to_i
+     end
+
+
+     #  write_attribute(:initiative, initiative_bonus)
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
