@@ -79,21 +79,13 @@ class CharactersController < ApplicationController
     end
 
    def set_initiative
-    #  dexterity = :dexterity
-    #  puts "#{dexterity}"
-     dex = character_params[:dexterity].to_i - 10
-     puts character_params
-     dex_mod = dex / 2
-     puts character_params[:improved_initiative]
+     dex_mod = character_params[:dexterity].to_i / 2 - 5
      if character_params[:improved_initiative] == "1"
        initiative_bonus = dex_mod.to_i + character_params[:level].to_i + 4
      else
        initiative_bonus = dex_mod.to_i + character_params[:level].to_i
      end
-
-
-     #  write_attribute(:initiative, initiative_bonus)
-    end
+   end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def character_params

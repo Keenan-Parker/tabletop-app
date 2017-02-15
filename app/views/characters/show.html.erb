@@ -15,52 +15,63 @@
 
   <p>
     <strong>Str:</strong>
-    <%= @character.strength %> | <strong>Mod:</strong> <%= @character.strength / 2 - 5 %>
+    <%= @character.strength %> |
+    Mod:
+    <%= @character.strength / 2 - 5 %>
   </p>
 
   <p>
     <strong>Con:</strong>
-    <%= @character.constitution %> | <strong>Mod:</strong> <%= @character.constitution / 2 - 5 %>
+    <%= @character.constitution %> |
+    Mod:
+    <%= @character.constitution / 2 - 5 %>
   </p>
 
   <p>
     <strong>Dex:</strong>
-    <%= @character.dexterity %> | <strong>Mod:</strong> <%= @character.dexterity / 2 - 5 %>
+    <%= @character.dexterity %> |
+    Mod:
+    <%= @character.dexterity / 2 - 5 %>
   </p>
 
   <p>
     <strong>Int:</strong>
-    <%= @character.intelligence %> | <strong>Mod:</strong> <%= @character.intelligence / 2 - 5 %>
+    <%= @character.intelligence %> |
+    Mod:
+    <%= @character.intelligence / 2 - 5 %>
   </p>
 
   <p>
     <strong>Wis:</strong>
-    <%= @character.wisdom %> | <strong>Mod:</strong> <%= @character.wisdom / 2 - 5 %>
+    <%= @character.wisdom %> |
+    Mod:
+    <%= @character.wisdom / 2 - 5 %>
   </p>
 
   <p>
     <strong>Cha:</strong>
-    <%= @character.charisma %> | <strong>Mod:</strong> <%= @character.charisma / 2 - 5 %>
+    <%= @character.charisma %> |
+    Mod:
+    <%= @character.charisma / 2 - 5 %>
   </p>
 
   <p>
+    <strong>Initiative:</strong>
+    <%= @character.initiative %>
+  </p>
+
+  <p>
+    <strong>HP:</strong>
+    <%= @character.hit_points %> |
     <strong>AC:</strong>
     <%= @character.armor_class %>
   </p>
 
   <p>
     <strong>PD:</strong>
-    <%= @character.phys_def %>
-  </p>
-
-  <p>
+    <%= @character.phys_def %> |
     <strong>MD:</strong>
     <%= @character.mental_def %>
-  </p>
-
-  <p>
-    <strong>HP:</strong>
-    <%= @character.hit_points %>
   </p>
 
   <p>
@@ -71,11 +82,6 @@
   <p>
     <strong>Recovery Dice:</strong>
     <%= @character.recovery_dice %>
-  </p>
-
-  <p>
-    <strong>Initiative:</strong>
-    <%= @character.initiative %>
   </p>
 
   <p>
@@ -110,10 +116,7 @@
 
   <p>
     <strong>Basic Melee Attack:</strong>
-    <%= @character.melee_atk %>
-  </p>
-
-  <p>
+    <%= @character.melee_atk %> | 
     <strong>Basic Ranged Attack:</strong>
     <%= @character.ranged_atk %>
   </p>
