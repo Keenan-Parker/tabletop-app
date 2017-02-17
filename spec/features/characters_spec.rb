@@ -11,7 +11,7 @@ RSpec.feature "Characters" do
     click_button "Log in"
   end
 
-  scenario "User creates character" do
+  scenario "User creates a character" do
     visit "/"
     click_link "Characters"
     click_link "Add a character"

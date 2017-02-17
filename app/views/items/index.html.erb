@@ -1,0 +1,35 @@
+<p id="notice" class="text-center"><%= notice %></p>
+
+<h1><%= @character.name %>'s Inventory</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Stats</th>
+      <th>Uses</th>
+      <th>Gold value</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @items.each do |item| %>
+      <tr>
+        <td><%= item.name %></td>
+        <td><%= item.description %></td>
+        <td><%= item.stats %></td>
+        <td><%= item.uses %></td>
+        <td><%= item.gold_value %></td>
+        <td><%= link_to 'View', item %></td>
+        <td><%= link_to 'Edit', edit_item_path(item) %></td>
+        <td><%= link_to 'Delete', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Item', new_character_item_path %>

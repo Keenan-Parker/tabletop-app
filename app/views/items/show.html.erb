@@ -1,0 +1,35 @@
+<p id="notice" class="text-center"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @item.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @item.description %>
+</p>
+
+<p>
+  <strong>Stats:</strong>
+  <%= @item.stats %>
+</p>
+
+<p>
+  <strong>Uses:</strong>
+  <%= @item.uses %>
+</p>
+
+<p>
+  <strong>Gold value:</strong>
+  <%= @item.gold_value %>
+</p>
+
+<p>
+  <strong>Character:</strong>
+  <%= @item.character.name %>
+</p>
+
+<%= link_to 'Edit', edit_item_path(@item) %> |
+<%= link_to 'Delete', @item, method: :delete, data: { confirm: "Are you sure?" } %> | 
+<%= link_to 'Back', character_items_path(@item.character_id) %>
