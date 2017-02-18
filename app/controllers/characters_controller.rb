@@ -15,7 +15,6 @@ class CharactersController < ApplicationController
   # GET /characters/new
   def new
     @character = current_user.characters.build
-    @items = @character.items
   end
 
   # GET /characters/1/edit
@@ -29,6 +28,7 @@ class CharactersController < ApplicationController
     initiative_bonus = set_initiative
     updated_params = character_params.merge(initiative: initiative_bonus)
     @character = current_user.characters.build(updated_params)
+    @character.user = current_user
 
     respond_to do |format|
       if @character.save

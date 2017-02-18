@@ -3,7 +3,7 @@
 <div class="row">
   <div class="panel panel-default text-center">
     <div class="panel-heading">
-      <h3 class="panel-title">Character Sheet</h3>
+      <h3 class="panel-title"><%= @character.name %>'s Character Sheet</h3>
     </div>
     <div class="panel-body">
         <p>
@@ -149,16 +149,14 @@
       <p>
         <strong><%= link_to "Inventory", character_items_path(@character) %>:</strong>
         <% @character.items.each do |item| %>
-          <%= item.name %>, 
+          <%= item.name %>,
         <% end %>
       </p>
-    </div>
-  </div>
-</div>
 
-<div class="row">
-  <div class="col-md-2">
-    <%= link_to 'Edit', edit_character_path(@character) %> |
-    <%= link_to 'Back', characters_path %>
+      <div>
+        <%= link_to 'Back', characters_path %> |
+        <%= link_to 'Edit', edit_character_path(@character) %>
+      </div>
+    </div>
   </div>
 </div>

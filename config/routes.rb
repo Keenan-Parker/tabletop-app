@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :rooms
   resources :characters, shallow: true do
     resources :items
   end
