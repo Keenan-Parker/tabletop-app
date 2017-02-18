@@ -1,152 +1,164 @@
 <p id="notice" class="text-center"><%= notice %></p>
-<div class="panel panel-default">
-  <div class="panel-heading">
-    <h3 class="panel-title">Character Sheet</h3>
-  </div>
-  <div class="panel-body text-center">
-    <p>
-      <strong>Name:</strong>
-      <%= @character.name %> |
-      <strong>Race:</strong>
-      <%= @character.race %>
-    </p>
 
-    <p>
-      <strong>Class:</strong>
-      <%= @character.job %> |
-      <strong>Level:</strong>
-      <%= @character.level %>
-    </p>
+<div class="row">
+  <div class="panel panel-default text-center">
+    <div class="panel-heading">
+      <h3 class="panel-title">Character Sheet</h3>
+    </div>
+    <div class="panel-body">
+        <p>
+          <strong>Name:</strong>
+          <%= @character.name %> |
+          <strong>Level:</strong>
+          <%= @character.level %>
+        </p>
 
-    <p>
-      <strong>Str:</strong>
-      <%= @character.strength %> |
-      Mod:
-      <%= @character.strength / 2 - 5 %>
-    </p>
+        <p>
+          <strong>Class:</strong>
+          <%= @character.job %> |
+          <strong>Race:</strong>
+          <%= @character.race %>
+        </p>
+        <p>
+          <strong>Str:</strong>
+          <%= @character.strength %> |
+          Mod:
+          <%= @character.strength / 2 - 5 %>
+        </p>
 
-    <p>
-      <strong>Con:</strong>
-      <%= @character.constitution %> |
-      Mod:
-      <%= @character.constitution / 2 - 5 %>
-    </p>
+        <p>
+          <strong>Con:</strong>
+          <%= @character.constitution %> |
+          Mod:
+          <%= @character.constitution / 2 - 5 %>
+        </p>
 
-    <p>
-      <strong>Dex:</strong>
-      <%= @character.dexterity %> |
-      Mod:
-      <%= @character.dexterity / 2 - 5 %>
-    </p>
+        <p>
+          <strong>Dex:</strong>
+          <%= @character.dexterity %> |
+          Mod:
+          <%= @character.dexterity / 2 - 5 %>
+        </p>
 
-    <p>
-      <strong>Int:</strong>
-      <%= @character.intelligence %> |
-      Mod:
-      <%= @character.intelligence / 2 - 5 %>
-    </p>
+        <p>
+          <strong>Int:</strong>
+          <%= @character.intelligence %> |
+          Mod:
+          <%= @character.intelligence / 2 - 5 %>
+        </p>
 
-    <p>
-      <strong>Wis:</strong>
-      <%= @character.wisdom %> |
-      Mod:
-      <%= @character.wisdom / 2 - 5 %>
-    </p>
+        <p>
+          <strong>Wis:</strong>
+          <%= @character.wisdom %> |
+          Mod:
+          <%= @character.wisdom / 2 - 5 %>
+        </p>
 
-    <p>
-      <strong>Cha:</strong>
-      <%= @character.charisma %> |
-      Mod:
-      <%= @character.charisma / 2 - 5 %>
-    </p>
+        <p>
+          <strong>Cha:</strong>
+          <%= @character.charisma %> |
+          Mod:
+          <%= @character.charisma / 2 - 5 %>
+        </p>
+      <p>
+        <strong>Initiative:</strong>
+        <%= @character.initiative %>
+      </p>
 
-    <p>
-      <strong>Initiative:</strong>
-      <%= @character.initiative %>
-    </p>
+      <p>
+        <strong>HP:</strong>
+        <%= @character.hit_points %> |
+        <strong>AC:</strong>
+        <%= @character.armor_class %>
+      </p>
 
-    <p>
-      <strong>HP:</strong>
-      <%= @character.hit_points %> |
-      <strong>AC:</strong>
-      <%= @character.armor_class %>
-    </p>
+      <p>
+        <strong>PD:</strong>
+        <%= @character.phys_def %> |
+        <strong>MD:</strong>
+        <%= @character.mental_def %>
+      </p>
 
-    <p>
-      <strong>PD:</strong>
-      <%= @character.phys_def %> |
-      <strong>MD:</strong>
-      <%= @character.mental_def %>
-    </p>
+      <p>
+        <strong>Recoveries:</strong>
+        <%= @character.recoveries %>
+      </p>
 
-    <p>
-      <strong>Recoveries:</strong>
-      <%= @character.recoveries %>
-    </p>
+      <p>
+        <strong>Recovery Dice:</strong>
+        <%= @character.recovery_dice %>
+      </p>
 
-    <p>
-      <strong>Recovery Dice:</strong>
-      <%= @character.recovery_dice %>
-    </p>
+      <p>
+        <strong>One Unique Thing:</strong>
+        <%= @character.one_unique_thing %>
+      </p>
 
-    <p>
-      <strong>One Unique Thing:</strong>
-      <%= @character.one_unique_thing %>
-    </p>
+      <p>
+        <strong>Icons:</strong>
+        <%= @character.icons %>
+      </p>
 
-    <p>
-      <strong>Icons:</strong>
-      <%= @character.icons %>
-    </p>
+      <p>
+        <strong>Backgrounds:</strong>
+        <%= @character.backgrounds %>
+      </p>
 
-    <p>
-      <strong>Backgrounds:</strong>
-      <%= @character.backgrounds %>
-    </p>
+      <p>
+        <strong>Racial:</strong>
+        <%= @character.racial %>
+      </p>
 
-    <p>
-      <strong>Racial:</strong>
-      <%= @character.racial %>
-    </p>
+      <p>
+        <strong>Class features:</strong>
+        <%= @character.class_features %>
+      </p>
 
-    <p>
-      <strong>Class features:</strong>
-      <%= @character.class_features %>
-    </p>
+      <p>
+        <strong>Talents:</strong>
+        <%= @character.talents %>
+      </p>
 
-    <p>
-      <strong>Talents:</strong>
-      <%= @character.talents %>
-    </p>
+      <p>
+        <strong>Basic Melee Attack:</strong>
+        <%= @character.melee_atk %> |
+        <strong>Basic Ranged Attack:</strong>
+        <%= @character.ranged_atk %>
+      </p>
 
-    <p>
-      <strong>Basic Melee Attack:</strong>
-      <%= @character.melee_atk %> |
-      <strong>Basic Ranged Attack:</strong>
-      <%= @character.ranged_atk %>
-    </p>
+      <p>
+        <strong>Powers:</strong>
+        <%= @character.powers %>
+      </p>
 
-    <p>
-      <strong>Powers:</strong>
-      <%= @character.powers %>
-    </p>
+      <p>
+        <strong>Feats:</strong>
+        <%= @character.feats %>
+      </p>
 
-    <p>
-      <strong>Feats:</strong>
-      <%= @character.feats %>
-    </p>
+      <p>
+        <strong>Equipment:</strong>
+        <%= @character.equipment %>
+      </p>
 
-    <p>
-      <strong>Equipment:</strong>
-      <%= @character.equipment %>
-    </p>
+      <p>
+        <strong>Gold:</strong>
+        <%= @character.gold %>
+      </p>
 
-    <p>
-      <strong>Gold:</strong>
-      <%= @character.gold %>
-    </p>
+      <p>
+        <strong><%= link_to "Inventory", character_items_path(@character) %>:</strong>
+        <% @character.items.each do |item| %>
+          <%= item.name %>, 
+        <% end %>
+      </p>
+    </div>
   </div>
 </div>
 
-<%= link_to 'Edit', edit_character_path(@character) %> |
-<%= link_to 'Back', characters_path %>
+<div class="row">
+  <div class="col-md-2">
+    <%= link_to 'Edit', edit_character_path(@character) %> |
+    <%= link_to 'Back', characters_path %>
+  </div>
+</div>

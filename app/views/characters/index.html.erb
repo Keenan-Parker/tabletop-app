@@ -21,6 +21,7 @@
           <td><%= character.level %></td>
 
           <td><%= link_to 'View', character %></td>
+          <td><%= link_to 'Inventory', character_items_path(character.id) %></td>
           <td><%= link_to 'Edit', edit_character_path(character) %></td>
           <td><%= link_to 'Remove', character, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         </tr>
