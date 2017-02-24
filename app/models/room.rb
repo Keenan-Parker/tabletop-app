@@ -1,4 +1,6 @@
 class Room < ApplicationRecord
   belongs_to :user
-  has_many :players, class_name: "RoomUser", foreign_key: "player_id"
+  has_many :players, class_name: "RoomCharacter", foreign_key: "room_id"
+
+  validates :name, :password, :gm_name, presence: true
 end

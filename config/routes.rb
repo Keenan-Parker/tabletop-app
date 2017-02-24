@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :characters, shallow: true do
     resources :items
   end
+  resources :room_characters
 
   resources :visitors
 

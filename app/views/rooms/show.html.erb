@@ -1,14 +1,93 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @room.name %>
-</p>
+<h1 class="text-center"><%= @room.name %></h1>
 
-<p>
-  <strong>Password:</strong>
-  <%= @room.password %>
-</p>
+<% if @room.user == current_user %>
+  <p class="text-center">
+    <strong>Password:</strong>
+    <%= @room.password %>
+  </p>
+<% end %>
 
-<%= link_to 'Edit', edit_room_path(@room) %> |
+<h3 class="text-center">GM: <%= @room.gm_name %></h3>
+
+<% if @room.user.id == current_user.id %>
+<% else %>
+  <% if @players.map(&:id).include? current_user.id %>
+  <% else %>
+    <%= simple_form_for(@join) do |f| %>
+      <%= f.hidden_field :room_id, value: @room.id %>
+      <%= f.input :player_id, collection: current_user.characters.order(:name) %>
+      <div class="form-actions">
+        <%= f.submit "Join", class: "btn btn-info" %>
+      </div>
+    <% end %>
+  <% end %>
+<% end %>
+
+<div class="row">
+<% if @room.players.any? %>
+  <% @room.players.each do |player| %>
+    <div class="panel panel-default text-center col-md-3">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= player.player.name %></h3>
+      </div>
+      <div class="panel-body">
+        <p>
+          <strong>Class:</strong>
+          <%= player.player.job %> |
+          <strong>Race:</strong>
+          <%= player.player.race %>
+        </p>
+        <p>
+          <strong>Str:</strong>
+          <%= player.player.strength / 2 - 5 %>
+        </p>
+        <p>
+          <strong>Con:</strong> |
+          <%= player.player.constitution / 2 - 5 %>
+        </p>
+        <p>
+          <strong>Dex:</strong> |
+          <%= player.player.dexterity / 2 - 5 %>
+        </p>
+        <p>
+          <strong>Int:</strong> |
+          <%= player.player.intelligence / 2 - 5 %>
+        </p>
+        <p>
+          <strong>Wis:</strong> |
+          <%= player.player.wisdom / 2 - 5 %>
+        </p>
+        <p>
+          <strong>Cha:</strong> |
+          <%= player.player.charisma / 2 - 5 %>
+        </p>
+        <p>
+          <strong>initiative:</strong>
+          <%= player.player.initiative %>
+        </p>
+        <p>
+          <strong>HP:</strong>
+          <%= player.player.hit_points %> |
+          <strong>AC:</strong>
+          <%= player.player.armor_class %>
+        </p>
+        <p>
+          <strong>PD:</strong>
+          <%= player.player.phys_def %> |
+          <strong>MD:</strong>
+          <%= player.player.mental_def %>
+        </p>
+      </div>
+    </div>
+  <% end %>
+<% end %>
+</div>
+
+<hr />
+
 <%= link_to 'Back', rooms_path %>
+<% if @room.user == current_user %>
+  | <%= link_to 'Edit', edit_room_path(@room) %>
+<% end %>

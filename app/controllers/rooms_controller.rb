@@ -10,6 +10,10 @@ class RoomsController < ApplicationController
   # GET /rooms/1
   # GET /rooms/1.json
   def show
+    @join = RoomCharacter.new
+    @characterids = @room.players.map(&:player_id)
+    @characters = Character.find(@characterids)
+    @players = User.find(@characters.map(&:user_id))
   end
 
   # GET /rooms/new
@@ -25,6 +29,7 @@ class RoomsController < ApplicationController
   # POST /rooms.json
   def create
     @room = Room.new(room_params)
+    @room.user = current_user
 
     respond_to do |format|
       if @room.save
@@ -69,6 +74,6 @@ class RoomsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def room_params
-      params.require(:room).permit(:name, :password)
+      params.require(:room).permit(:name, :password, :gm_name)
     end
 end

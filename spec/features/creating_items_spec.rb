@@ -22,12 +22,16 @@ RSpec.feature "Items" do
     click_link "Characters"
     click_link "View"
     click_link "Inventory"
-    click_link "New item"
+    click_link "New Item"
 
     fill_in "Name", with: "Axe"
     fill_in "Description", with: "A normal axe!"
     fill_in "Stats", with: "d8 damage"
     fill_in "Gold value", with: "5"
-    fill_in "Character"
+
+    click_button "Create Item"
+
+    expect(page).to have_content("Item was successfully created")
+    expect(page).to have_content("Axe")
   end
 end

@@ -3,8 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-
-          has_many :characters
-          has_many :rooms
-          has_many :campaigns, class_name: "RoomUser", foreign_key: "player_id"
+         
+  has_many :characters, dependent: :destroy
+  has_many :rooms
 end
