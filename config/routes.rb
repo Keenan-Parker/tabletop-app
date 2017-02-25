@@ -4,9 +4,7 @@ Rails.application.routes.draw do
     resources :items
   end
   resources :room_characters
-
   resources :visitors
-
   devise_for :users
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

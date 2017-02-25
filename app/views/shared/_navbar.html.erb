@@ -20,12 +20,12 @@
         <% if user_signed_in? %>
           <li><%= link_to "Characters", characters_path %></li>
           <li><%= link_to "Rooms", rooms_path %></li>
-          <form class="navbar-form navbar-left">
-            <div class="form-group">
-              <input type="text" class="form-control" placeholder="Search for a room">
-            </div>
-            <button type="submit" class="btn btn-default">Search</button>
-          </form>
+          <%= form_tag(rooms_path, method: 'get', class: 'navbar-form navbar-left') do %>
+            <%= search_field_tag :search, nil, placeholder: 'Search for a room', class: 'form-control' %>
+            <%= button_tag type: 'submit', class: 'btn btn-default' do %>
+              <span class="glyphicon glyphicon-search"></span>
+            <% end %>
+          <% end %>
           <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
         <% else %>
           <li><%= link_to "Sign In", new_user_session_path %></li>

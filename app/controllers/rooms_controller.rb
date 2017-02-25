@@ -4,7 +4,11 @@ class RoomsController < ApplicationController
   # GET /rooms
   # GET /rooms.json
   def index
-    @rooms = Room.all
+    if params[:search].present?
+      @rooms = Room.search(params[:search])
+    else
+      @rooms = Room.all
+    end
   end
 
   # GET /rooms/1
