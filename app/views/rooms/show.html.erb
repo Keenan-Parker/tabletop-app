@@ -17,8 +17,7 @@
   <% end %>
 </h3>
 
-<% if @room.user.id == current_user.id %>
-<% else %>
+<% if @room.user.id != current_user.id %>
   <% if @players.map(&:id).include? current_user.id %>
   <% else %>
     <%= simple_form_for(@join) do |f| %>
@@ -46,31 +45,31 @@
           <%= player.player.race %>
         </p>
         <p>
-          <strong>Str:</strong>
+          <strong>Strength Mod:</strong>
           <%= player.player.strength / 2 - 5 %>
         </p>
         <p>
-          <strong>Con:</strong> |
+          <strong>Constitution Mod:</strong>
           <%= player.player.constitution / 2 - 5 %>
         </p>
         <p>
-          <strong>Dex:</strong> |
+          <strong>Dexterity Mod:</strong>
           <%= player.player.dexterity / 2 - 5 %>
         </p>
         <p>
-          <strong>Int:</strong> |
+          <strong>Intelligence Mod:</strong>
           <%= player.player.intelligence / 2 - 5 %>
         </p>
         <p>
-          <strong>Wis:</strong> |
+          <strong>Wisdom Mod:</strong>
           <%= player.player.wisdom / 2 - 5 %>
         </p>
         <p>
-          <strong>Cha:</strong> |
+          <strong>Charisma Mod:</strong>
           <%= player.player.charisma / 2 - 5 %>
         </p>
         <p>
-          <strong>initiative:</strong>
+          <strong>Initiative:</strong>
           <%= player.player.initiative %>
         </p>
         <p>
@@ -85,6 +84,9 @@
           <strong>MD:</strong>
           <%= player.player.mental_def %>
         </p>
+        <% if player.player.user_id == current_user.id %>
+          <%= link_to "Remove", player, method: :delete %>
+        <% end %>
       </div>
     </div>
   <% end %>
